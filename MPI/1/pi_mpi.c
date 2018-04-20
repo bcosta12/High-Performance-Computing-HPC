@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <mpi.h>
-void main (int argc, char ** argv ) {
-    MPI_Init( &argc, &argv );
+
+void main ( int argc, char ** argv ) {
     
+    MPI_Init( &argc, &argv );
     
     int N = 100000;
     double step;
@@ -32,13 +33,11 @@ void main (int argc, char ** argv ) {
     }
     
     printf("rank = %d init = %d final = %d\n", rank, init, final ); 
-  
     
     for (i = init;i <= final; i++){
         x = step * i + 0.5*step;
         sum += 4.0/(1.0+x*x);
     }
-    
     
     
     MPI_Reduce(&sum, &sum_final, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);

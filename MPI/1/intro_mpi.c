@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 void main (){
+
 	int rank, init, final, i, N, np, chunk, rest;
 	N = 10;
 	np = 4;
@@ -8,10 +9,10 @@ void main (){
 	rest = N % np;
 	
 
-	for(rank = 0; rank < np ; rank++){
+	for( rank = 0; rank < np ; rank++ ){
 		printf("rank %d\n", rank);
 
-		if(rank < rest){
+		if( rank < rest ){
 			init = (chunk + 1) * rank;
 			final = init + chunk;
 		}
@@ -21,7 +22,7 @@ void main (){
 		}
 		
 		printf("i ");
-		for(i = init;i<=final;i++){
+		for( i = init;i<=final;i++  ){
 			printf("%d", i);
 		}
 		printf("\n");
