@@ -1,0 +1,30 @@
+Load Module
+------------
+    To choose which mpi implementation use (only if more than one were installed)
+    module load mpi/openmpi-x86_64
+
+Functions
+----------
+
+    MPI_Init : Init MPI
+    MPi_Finalize : Finalize MPI
+    MPI_Comm_rank : get process rank (0 ... np-1)
+    MPI_Comm_size : get #process
+    MPI_Send : Send value
+    MPI_Recv : Recv value
+    MPI_Reduce : Reduce values in a variable
+
+    //Broadcast
+    MPI_Bcast( *buf, count, datatype, root, comm )
+        root : 0 ... np-1
+        ex: Send pi (count = 1, one variable), as a float, to rank 0 in global comm
+        MPI_Bcast( &pi, 1, MPI_FLOAT, 0, MPI_COMM_WORLD )
+
+    //Barrier wait all process to continue
+    MPI_Barries( comm )
+
+    //Send array part to other process
+    MPI_Scatter( *buf, count, datatype, *recv_buf, recv_count, recv_datatype, root, comm);
+
+    //Send a lot of parts to concat in on a process
+    MPI_Gather(  )
